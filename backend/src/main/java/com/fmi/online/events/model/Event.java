@@ -2,6 +2,8 @@ package com.fmi.online.events.model;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import java.sql.Date;
+import java.sql.Timestamp;
 import java.time.LocalDate;
 import java.time.LocalTime;
 
@@ -12,7 +14,7 @@ public class Event {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @Id
+    @NotNull
     private Long creatorId;
 
     @NotNull
@@ -22,30 +24,30 @@ public class Event {
     private String description;
 
     @NotNull
-    private LocalDate date;
+    private Date date;
 
-    private LocalTime start;
+    private Timestamp startTime;
 
-    private  LocalTime end;
+    private Timestamp endTime;
 
     private String image;
 
 //    private List<Long> attenders;
 
-    public Event(Long creatorId, @NotNull String name, @NotNull String description, @NotNull LocalDate date) {
+    public Event(Long creatorId, @NotNull String name, @NotNull String description, @NotNull Date date) {
         this.creatorId = creatorId;
         this.name = name;
         this.description = description;
         this.date = date;
     }
 
-    public Event(Long creatorId, @NotNull String name, @NotNull String description, @NotNull LocalDate date, LocalTime start, LocalTime end, String image) {
+    public Event(Long creatorId, @NotNull String name, @NotNull String description, @NotNull Date date, Timestamp startTime, Timestamp endTime, String image) {
         this.creatorId = creatorId;
         this.name = name;
         this.description = description;
         this.date = date;
-        this.start = start;
-        this.end = end;
+        this.startTime = startTime;
+        this.endTime = endTime;
         this.image = image;
     }
 
@@ -85,28 +87,28 @@ public class Event {
         this.description = description;
     }
 
-    public LocalDate getDate() {
+    public Date getDate() {
         return date;
     }
 
-    public void setDate(LocalDate date) {
+    public void setDate(Date date) {
         this.date = date;
     }
 
-    public LocalTime getStart() {
-        return start;
+    public Timestamp getStartTime() {
+        return startTime;
     }
 
-    public void setStart(LocalTime start) {
-        this.start = start;
+    public void setStartTime(Timestamp startTime) {
+        this.startTime = startTime;
     }
 
-    public LocalTime getEnd() {
-        return end;
+    public Timestamp getEndTime() {
+        return endTime;
     }
 
-    public void setEnd(LocalTime end) {
-        this.end = end;
+    public void setEndTime(Timestamp endTime) {
+        this.endTime = endTime;
     }
 
     public String getImage() {
