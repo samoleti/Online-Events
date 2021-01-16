@@ -1,12 +1,21 @@
 package com.fmi.online.events.service;
 
+import com.fmi.online.events.model.Event;
 import com.fmi.online.events.model.user.User;
 import com.fmi.online.events.repository.UserRepository;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
+@Service
 public class UserService {
+
     private UserRepository repository;
+
+    public UserService(UserRepository repository) {
+        this.repository = repository;
+    }
 
     public User create(User user) {
         return repository.saveAndFlush(user);
@@ -28,5 +37,8 @@ public class UserService {
         return repository.findAll();
     }
 
+    public Optional<User> getById(Long id) {
+        return repository.findById(id);
+    }
 
 }

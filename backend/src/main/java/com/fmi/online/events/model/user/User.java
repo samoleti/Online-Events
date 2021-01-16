@@ -1,18 +1,17 @@
 package com.fmi.online.events.model.user;
 
+import com.fmi.online.events.model.Event;
 import com.fmi.online.events.model.digitalwallet.DigitalWallet;
-import org.springframework.data.annotation.Id;
 
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
+import javax.persistence.*;
+import java.util.List;
 
-
+@Entity
+@Table(name = "users")
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-
-    private Long id2;
 
     private String firstName;
 
@@ -24,13 +23,16 @@ public class User {
 
     private String password;
 
+    @Embedded
     private DigitalWallet wallet;
 
     private boolean verificationBadge;
 
-    public User(Long id2, String firstName, String lastName, String username, String email,
-                String password, DigitalWallet wallet, boolean verificationBadge) {
-        this.id2 = id2;
+    private List<Event> createdEvents;
+
+    public User(Long id, String firstName, String lastName, String username, String email, String password,
+                DigitalWallet wallet, boolean verificationBadge) {
+        this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
         this.username = username;
@@ -41,11 +43,6 @@ public class User {
     }
 
     public User() {
-
-    }
-
-    public User(Long id) {
-        this.id = id;
     }
 
     public Long getId() {
@@ -110,5 +107,13 @@ public class User {
 
     public void setVerificationBadge(boolean verificationBadge) {
         this.verificationBadge = verificationBadge;
+    }
+
+    public List<Event> getCreatedEvents() {
+        return createdEvents;
+    }
+
+    public void setCreatedEvents(List<Event> createdEvents) {
+        this.createdEvents = createdEvents;
     }
 }
