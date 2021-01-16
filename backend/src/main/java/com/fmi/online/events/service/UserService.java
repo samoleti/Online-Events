@@ -1,7 +1,6 @@
 package com.fmi.online.events.service;
 
-import com.fmi.online.events.model.Event;
-import com.fmi.online.events.model.user.User;
+import com.fmi.online.events.model.User;
 import com.fmi.online.events.repository.UserRepository;
 import org.springframework.stereotype.Service;
 

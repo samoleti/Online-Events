@@ -4,8 +4,6 @@ import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.sql.Date;
 import java.sql.Timestamp;
-import java.time.LocalDate;
-import java.time.LocalTime;
 
 @Entity
 @Table(name = "events")
@@ -33,6 +31,10 @@ public class Event {
     private String image;
 
 //    private List<Long> attenders;
+
+    @JoinColumn(name = "userId")
+    @ManyToOne(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
+    User user;
 
     public Event(Long creatorId, @NotNull String name, @NotNull String description, @NotNull Date date) {
         this.creatorId = creatorId;

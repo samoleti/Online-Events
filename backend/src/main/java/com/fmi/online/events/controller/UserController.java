@@ -1,16 +1,14 @@
 package com.fmi.online.events.controller;
 
 import com.fmi.online.events.model.Event;
-import com.fmi.online.events.model.user.User;
+import com.fmi.online.events.model.User;
 import com.fmi.online.events.service.UserService;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
-import javax.validation.Valid;
 import java.util.Collections;
 import java.util.List;
-import java.util.Optional;
+import java.util.Set;
 
 @RestController
 public class UserController {
@@ -49,10 +47,10 @@ public class UserController {
     }
 
     @GetMapping("{id}/your-events")
-    public List<Event> getCreatedEvents(@PathVariable Long id) {
+    public Set<Event> getCreatedEvents(@PathVariable Long id) {
         return service.getById(id)
                 .map(User::getCreatedEvents)
-                .orElse(Collections.emptyList());
+                .orElse(Collections.emptySet());
     }
 
 }

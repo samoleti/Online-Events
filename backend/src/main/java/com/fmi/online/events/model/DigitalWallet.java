@@ -1,4 +1,4 @@
-package com.fmi.online.events.model.digitalwallet;
+package com.fmi.online.events.model;
 
 import javax.persistence.Embeddable;
 import javax.persistence.Entity;

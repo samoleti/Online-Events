@@ -1,16 +1,14 @@
-package com.fmi.online.events.model.user;
-
-import com.fmi.online.events.model.Event;
-import com.fmi.online.events.model.digitalwallet.DigitalWallet;
+package com.fmi.online.events.model;
 
 import javax.persistence.*;
-import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table(name = "users")
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "userId")
     private Long id;
 
     private String firstName;
@@ -28,7 +26,8 @@ public class User {
 
     private boolean verificationBadge;
 
-    private List<Event> createdEvents;
+    @OneToMany(mappedBy = "users", fetch = FetchType.LAZY)
+    private Set<Event> createdEvents;
 
     public User(Long id, String firstName, String lastName, String username, String email, String password,
                 DigitalWallet wallet, boolean verificationBadge) {
@@ -109,11 +108,11 @@ public class User {
         this.verificationBadge = verificationBadge;
     }
 
-    public List<Event> getCreatedEvents() {
+    public Set<Event> getCreatedEvents() {
         return createdEvents;
     }
 
-    public void setCreatedEvents(List<Event> createdEvents) {
+    public void setCreatedEvents(Set<Event> createdEvents) {
         this.createdEvents = createdEvents;
     }
 }
