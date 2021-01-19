@@ -1,14 +1,11 @@
 package com.fmi.online.events.controller;
 
-import com.fmi.online.events.model.Event;
 import com.fmi.online.events.model.User;
 import com.fmi.online.events.service.UserService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Collections;
 import java.util.List;
-import java.util.Set;
 
 @RestController
 public class UserController {
@@ -46,11 +43,5 @@ public class UserController {
         service.delete(id);
     }
 
-    @GetMapping("{id}/your-events")
-    public Set<Event> getCreatedEvents(@PathVariable Long id) {
-        return service.getById(id)
-                .map(User::getCreatedEvents)
-                .orElse(Collections.emptySet());
-    }
 
 }

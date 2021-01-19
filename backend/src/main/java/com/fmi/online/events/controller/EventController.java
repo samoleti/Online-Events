@@ -18,13 +18,12 @@ public class EventController {
     @Autowired
     private IEventService eventService;
 
-
     @ResponseStatus(code = HttpStatus.CREATED)
     @PostMapping
     public void create(@Valid @RequestBody Event event) {
+        System.out.println(event);
         eventService.create(event);
     }
-
 
     @GetMapping
     public List<Event> getAll() {

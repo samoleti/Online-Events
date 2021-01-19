@@ -15,9 +15,7 @@ public class EventService implements IEventService {
     private EventRepository eventRepository;
 
     @Override
-    public Event create(Event event) {
-        return eventRepository.saveAndFlush(event);
-    }
+    public Event create(Event event) { return eventRepository.saveAndFlush(event); }
 
     @Override
     public void update(Long id, Event event) {

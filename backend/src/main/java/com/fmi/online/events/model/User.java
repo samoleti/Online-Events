@@ -1,7 +1,6 @@
 package com.fmi.online.events.model;
 
 import javax.persistence.*;
-import java.util.Set;
 
 @Entity
 @Table(name = "users")
@@ -25,9 +24,6 @@ public class User {
     private DigitalWallet wallet;
 
     private boolean verificationBadge;
-
-    @OneToMany(mappedBy = "users", fetch = FetchType.LAZY)
-    private Set<Event> createdEvents;
 
     public User(Long id, String firstName, String lastName, String username, String email, String password,
                 DigitalWallet wallet, boolean verificationBadge) {
@@ -108,11 +104,4 @@ public class User {
         this.verificationBadge = verificationBadge;
     }
 
-    public Set<Event> getCreatedEvents() {
-        return createdEvents;
-    }
-
-    public void setCreatedEvents(Set<Event> createdEvents) {
-        this.createdEvents = createdEvents;
-    }
 }

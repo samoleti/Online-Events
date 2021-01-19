@@ -1,5 +1,7 @@
 package com.fmi.online.events.model;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.sql.Date;
@@ -22,6 +24,7 @@ public class Event {
     private String description;
 
     @NotNull
+    @JsonFormat(pattern="yyyy-MM-dd")
     private Date date;
 
     private Timestamp startTime;
@@ -29,12 +32,6 @@ public class Event {
     private Timestamp endTime;
 
     private String image;
-
-//    private List<Long> attenders;
-
-    @JoinColumn(name = "userId")
-    @ManyToOne(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
-    User user;
 
     public Event(Long creatorId, @NotNull String name, @NotNull String description, @NotNull Date date) {
         this.creatorId = creatorId;
@@ -119,5 +116,19 @@ public class Event {
 
     public void setImage(String image) {
         this.image = image;
+    }
+
+    @Override
+    public String toString() {
+        return "Event{" +
+                "id=" + id +
+                ", creatorId=" + creatorId +
+                ", name='" + name + '\'' +
+                ", description='" + description + '\'' +
+                ", date=" + date +
+                ", startTime=" + startTime +
+                ", endTime=" + endTime +
+                ", image='" + image + '\'' +
+                '}';
     }
 }
