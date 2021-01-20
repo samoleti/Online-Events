@@ -1,4 +1,4 @@
-package com.fmi.online.events.service;
+package com.fmi.online.events.service.impl;
 
 import com.fmi.online.events.model.User;
 import com.fmi.online.events.repository.UserRepository;

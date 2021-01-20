@@ -1,8 +1,9 @@
-package com.fmi.online.events.service;
+package com.fmi.online.events.service.interfaces;
 
 import com.fmi.online.events.model.Event;
 
 import java.util.List;
+import java.util.Set;
 
 public interface IEventService {
     Event create(Event event);
@@ -10,5 +11,5 @@ public interface IEventService {
     void delete(Long id);
     List<Event> getAll();
     Event getById(Long id);
-    Event getByCreatorId(Long creatorId);
+    Set<Event> getEventsByCreatorId(Long creatorId);
 }

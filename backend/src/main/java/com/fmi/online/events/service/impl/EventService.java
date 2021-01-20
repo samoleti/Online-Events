@@ -2,11 +2,12 @@ package com.fmi.online.events.service.impl;
 
 import com.fmi.online.events.model.Event;
 import com.fmi.online.events.repository.EventRepository;
-import com.fmi.online.events.service.IEventService;
+import com.fmi.online.events.service.interfaces.IEventService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Set;
 
 @Service
 public class EventService implements IEventService {
@@ -44,7 +45,7 @@ public class EventService implements IEventService {
     }
 
     @Override
-    public Event getByCreatorId(Long creatorId) {
-        return null;
+    public Set<Event> getEventsByCreatorId(Long creatorId) {
+        return eventRepository.findByCreatorId(creatorId);
     }
 }

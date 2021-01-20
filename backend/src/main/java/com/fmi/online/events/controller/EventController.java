@@ -1,7 +1,7 @@
 package com.fmi.online.events.controller;
 
 import com.fmi.online.events.model.Event;
-import com.fmi.online.events.service.IEventService;
+import com.fmi.online.events.service.interfaces.IEventService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 
 @RestController
 @RequestMapping("/api/events")
@@ -46,6 +47,11 @@ public class EventController {
     @PutMapping("/{id}")
     public void update(@PathVariable Long id, @RequestBody Event event) {
         eventService.update(id, event);
+    }
+
+    @GetMapping("{id}/your-events")
+    public Set<Event> getCreatedEvents(@PathVariable Long id) {
+        return eventService.getEventsByCreatorId(id);
     }
 
 }

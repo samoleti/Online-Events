@@ -1,7 +1,7 @@
 package com.fmi.online.events.controller;
 
 import com.fmi.online.events.model.User;
-import com.fmi.online.events.service.UserService;
+import com.fmi.online.events.service.impl.UserService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 

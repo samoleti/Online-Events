@@ -1,4 +1,4 @@
-package com.fmi.online.events.service;
+package com.fmi.online.events.service.impl;
 
 import com.fmi.online.events.model.Attender;
 import com.fmi.online.events.model.Event;
@@ -14,6 +14,11 @@ public class AttenderService {
 
     private AttenderRepository repository;
     private EventService eventService;
+
+    public AttenderService(AttenderRepository repository, EventService eventService) {
+        this.repository = repository;
+        this.eventService = eventService;
+    }
 
     public Collection<Attender> getById(Long id) {
         return repository.findByAttenderId(id);
