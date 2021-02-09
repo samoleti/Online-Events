@@ -14,7 +14,7 @@ import java.util.Set;
 
 @RestController
 @RequestMapping("/api/events")
-@CrossOrigin(origins = "http://localhost:8080")
+@CrossOrigin(origins = "http://localhost:8081")
 public class EventController {
     @Autowired
     private IEventService eventService;
