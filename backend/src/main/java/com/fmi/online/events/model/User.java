@@ -37,6 +37,11 @@ public class User {
         this.verificationBadge = verificationBadge;
     }
 
+    public User(String username, String password) {
+        this.username = username;
+        this.password = password;
+    }
+
     public User() {
     }
 
